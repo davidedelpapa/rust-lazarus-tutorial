@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="LazRust.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="27"/>
+        <UsageCount Value="21"/>
+      </Unit>
+      <Unit>
+        <Filename Value="testunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="TestUnit"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="23"/>
+        <CursorPos X="51" Y="31"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="rustlib.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="RustLib"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="73" Y="10"/>
+        <UsageCount Value="21"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="4">
+      <Position>
+        <Filename Value="testunit.pas"/>
+        <Caret Line="26" Column="30" TopLine="9"/>
+      </Position>
+      <Position>
+        <Filename Value="testunit.pas"/>
+        <Caret Line="39" Column="92" TopLine="17"/>
+      </Position>
+      <Position>
+        <Filename Value="testunit.pas"/>
+        <Caret Line="33" Column="11" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="testunit.pas"/>
+        <Caret Line="40" Column="3" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="testunit.pas"/>
+        <Caret Line="22" Column="38" TopLine="11"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
