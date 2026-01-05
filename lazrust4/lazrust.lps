@@ -7,22 +7,23 @@
       <Unit>
         <Filename Value="lazrust.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="6"/>
-        <CursorPos X="14" Y="13"/>
+        <CursorPos X="27" Y="31"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="rustlib.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="43" Y="29"/>
+        <TopLine Value="8"/>
+        <CursorPos X="35" Y="32"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="1">
+    <JumpHistory HistoryIndex="3">
       <Position>
         <Filename Value="lazrust.lpr"/>
         <Caret Line="38" Column="23" TopLine="13"/>
@@ -30,6 +31,14 @@
       <Position>
         <Filename Value="rustlib.pas"/>
         <Caret Line="19" Column="23"/>
+      </Position>
+      <Position>
+        <Filename Value="rustlib.pas"/>
+        <Caret Line="29" Column="43"/>
+      </Position>
+      <Position>
+        <Filename Value="lazrust.lpr"/>
+        <Caret Line="13" Column="14" TopLine="4"/>
       </Position>
     </JumpHistory>
     <RunParams>

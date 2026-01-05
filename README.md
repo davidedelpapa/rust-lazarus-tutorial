@@ -6,3 +6,4 @@ In RustLaz there's a Rust crate that produces a library, while in the LazRust fo
 
 Once compiled the Rust library in release mode `cargo build --release` the obtained libray must be put in the same folder as the lazarus executable in Windows, or copied in */usr/lib/* (or wherever visible by the linker) in a Linux system.
 
+Find the whole tutorial on [dev.to](https://dev.to/davidedelpapa/freepascallazarus-and-rust-integration-322i)
