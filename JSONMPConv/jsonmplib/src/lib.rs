@@ -1,0 +1,135 @@
+use std::ffi::{CStr, CString};
+use std::os::raw::{c_char, c_int};
+use std::ptr;
+
+use rmp_serde::{from_slice, to_vec};
+use serde_json::Value;
+
+/// FFI wrapper for MessagePack.
+#[repr(C)]
+pub struct MpBuffer {
+    pub data: *mut u8,
+    pub len: c_int,
+}
+
+/// Free MpBuffer's memory.
+#[unsafe(no_mangle)]
+pub extern "C" fn free_mpbuffer(buf: MpBuffer) {
+    if !buf.data.is_null() {
+        unsafe {
+            drop(Vec::from_raw_parts(
+                buf.data,
+                buf.len as usize,
+                buf.len as usize,
+            ));
+        }
+    }
+}
+
+/// Free a C string's memory.
+#[unsafe(no_mangle)]
+pub extern "C" fn free_cstring(s: *mut c_char) {
+    if !s.is_null() {
+        unsafe {
+            drop(CString::from_raw(s));
+        }
+    }
+}
+
+/// Convert JSON text to MessagePack binary.
+///
+/// On error, returns an empty buffer
+#[unsafe(no_mangle)]
+pub extern "C" fn json_to_msgpack(json_ptr: *const c_char) -> MpBuffer {
+    if json_ptr.is_null() {
+        return MpBuffer {
+            data: ptr::null_mut(),
+            len: 0,
+        };
+    }
+
+    unsafe {
+        match CStr::from_ptr(json_ptr).to_str() {
+            Ok(json_str) => {
+                // Parse JSON
+                match serde_json::from_str::<Value>(json_str) {
+                    Ok(value) => {
+                        // Encode to MessagePack
+                        match to_vec(&value) {
+                            Ok(vec) => {
+                                let len = vec.len();
+                                let mut vec = vec;
+                                let data = vec.as_mut_ptr();
+
+                                // Avoid dropping the Vec
+                                std::mem::forget(vec);
+                                let c_len = len as c_int;
+
+                                MpBuffer { data, len: c_len }
+                            }
+                            Err(_) => MpBuffer {
+                                data: ptr::null_mut(),
+                                len: 0,
+                            },
+                        }
+                    }
+                    Err(_) => MpBuffer {
+                        data: ptr::null_mut(),
+                        len: 0,
+                    },
+                }
+            }
+            Err(_) => MpBuffer {
+                data: ptr::null_mut(),
+                len: 0,
+            },
+        }
+    }
+}
+
+/// Convert MessagePack binary to JSON string.
+#[unsafe(no_mangle)]
+pub extern "C" fn msgpack_to_json(data: *const u8, len: c_int) -> *mut c_char {
+    if data.is_null() || len == 0 {
+        return ptr::null_mut();
+    }
+
+    unsafe {
+        let slice = std::slice::from_raw_parts(data, len as usize);
+
+        match from_slice::<Value>(slice) {
+            Ok(value) => match serde_json::to_string_pretty(&value) {
+                Ok(json_str) => CString::new(json_str).unwrap().into_raw(),
+                Err(_) => ptr::null_mut(),
+            },
+            Err(_) => ptr::null_mut(),
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn round_trip() {
+        let json = r#"{"name":"Alice","age":30}"#;
+        let cjson = CString::new(json).unwrap();
+        let buf = json_to_msgpack(cjson.as_ptr());
+
+        assert!(buf.len > 0);
+        assert!(!buf.data.is_null());
+
+        let json_back = unsafe {
+            let ptr = msgpack_to_json(buf.data, buf.len);
+            let rust_str = CStr::from_ptr(ptr).to_str().unwrap().to_string();
+            free_cstring(ptr);
+            rust_str
+        };
+
+        free_mpbuffer(buf);
+
+        assert!(json_back.contains("Alice"));
+        assert!(json_back.contains("30"));
+    }
+}
