@@ -1,0 +1,120 @@
+object Form1: TForm1
+  Left = 342
+  Height = 476
+  Top = 30
+  Width = 695
+  Caption = 'Form1'
+  ClientHeight = 476
+  ClientWidth = 695
+  LCLVersion = '4.4.0.0'
+  OnCreate = FormCreate
+  object Panel1: TPanel
+    Left = 0
+    Height = 34
+    Top = 0
+    Width = 695
+    Align = alTop
+    ClientHeight = 34
+    ClientWidth = 695
+    TabOrder = 0
+    object btnConvert: TButton
+      Left = 1
+      Height = 32
+      Top = 1
+      Width = 75
+      Align = alLeft
+      Caption = 'Convert'
+      TabOrder = 0
+      OnClick = btnConvertClick
+    end
+    object btnReverse: TButton
+      Left = 76
+      Height = 32
+      Top = 1
+      Width = 75
+      Align = alLeft
+      Caption = 'Switch'
+      TabOrder = 1
+      OnClick = btnReverseClick
+    end
+    object CheckBase64: TCheckBox
+      Left = 151
+      Height = 32
+      Top = 1
+      Width = 65
+      Align = alLeft
+      Caption = 'Base64'
+      TabOrder = 2
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 442
+    Top = 34
+    Width = 695
+    Align = alClient
+    ClientHeight = 442
+    ClientWidth = 695
+    TabOrder = 1
+    object Panel3: TPanel
+      Left = 1
+      Height = 440
+      Top = 1
+      Width = 332
+      Align = alLeft
+      ClientHeight = 440
+      ClientWidth = 332
+      TabOrder = 0
+      object Label1: TLabel
+        Left = 1
+        Height = 18
+        Top = 1
+        Width = 330
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'JSON'
+      end
+      object Memo1: TMemo
+        Left = 1
+        Height = 420
+        Top = 19
+        Width = 330
+        Align = alClient
+        TabOrder = 0
+      end
+    end
+    object Splitter1: TSplitter
+      Left = 333
+      Height = 440
+      Top = 1
+      Width = 5
+    end
+    object Panel4: TPanel
+      Left = 338
+      Height = 440
+      Top = 1
+      Width = 356
+      Align = alClient
+      ClientHeight = 440
+      ClientWidth = 356
+      TabOrder = 2
+      object Label2: TLabel
+        Left = 1
+        Height = 18
+        Top = 1
+        Width = 354
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Messagepack'
+      end
+      object Memo2: TMemo
+        Left = 1
+        Height = 420
+        Top = 19
+        Width = 354
+        Align = alClient
+        TabOrder = 0
+      end
+    end
+  end
+end

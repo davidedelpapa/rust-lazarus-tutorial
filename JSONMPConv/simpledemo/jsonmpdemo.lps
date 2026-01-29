@@ -9,20 +9,20 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <TopLine Value="24"/>
-        <CursorPos X="9" Y="26"/>
-        <UsageCount Value="20"/>
+        <CursorPos Y="52"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="jsonmplib.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="61" Y="14"/>
-        <UsageCount Value="20"/>
+        <CursorPos X="5" Y="28"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="3">
+    <JumpHistory HistoryIndex="5">
       <Position>
         <Filename Value="jsonmplib.pas"/>
         <Caret Line="17"/>
@@ -38,6 +38,14 @@
       <Position>
         <Filename Value="jsonmpdemo.lpr"/>
         <Caret Line="25" Column="46" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="jsonmplib.pas"/>
+        <Caret Line="7" Column="23"/>
+      </Position>
+      <Position>
+        <Filename Value="jsonmpdemo.lpr"/>
+        <Caret Column="19"/>
       </Position>
     </JumpHistory>
     <RunParams>
